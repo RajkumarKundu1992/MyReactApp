@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       Hello World
-    </div>
+    <button onClick={function () { alert("Msg saved") }}>Add</button ><br />
+      <button onClick={function () { alert("Msg saved") }} > Sub</button>
+    </div >
   );
 }
 
