@@ -6,15 +6,16 @@ function App() {
   return (
     <div className="App">
       Hello World---By Rajkumar<br /><br />
-      <button >Add</button ><br />
+      <button onClick={inc}>Add</button ><br />
       <label id="num">press (+ or -)</label><br />
-      <button onClick={function () { alert("Msg saved") }} > Sub</button><br /><br />
+      <button onClick={dec} > Sub</button><br /><br />
       <input id="txt" type="text" name="text" placeholder="enter text" onChange={reverseInput} />
 
-      <label id="lbl"> hi</label>
+      <label id="lbl"> Reverse String will display here</label>
     </div >
 
   );
+
 }
 
 function handleClick() {
@@ -31,7 +32,14 @@ function reverseInput(r) {
 
   document.getElementById("lbl").textContent = o;
 }
+var n = 0;
 
+function inc() {
+  document.getElementById("num").textContent = n++;
+}
+function dec() {
 
+  document.getElementById("num").textContent = --n;
+}
 
 export default App;
