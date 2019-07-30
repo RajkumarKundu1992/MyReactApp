@@ -3,8 +3,12 @@ import React, { Component } from 'react'
 export default class Counter extends Component {
     constructor(props) {
         super(props);
-        this.state = { counter: props.myValue }
-
+        this.state = {
+            counter: props.myValue,
+            value: "rajkumar",
+            reverse: "Help me reverse"
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
 
     render() {
@@ -14,13 +18,26 @@ export default class Counter extends Component {
                 <button onClick={() => this.setState({ counter: this.state.counter + 1 })}>Add</button ><br />
                 <label id="num">{this.state.counter}</label><br />
                 <button onClick={() => this.setState({ counter: this.state.counter - 1 })} > Sub</button><br /><br />
-                <input id="txt" type="text" name="text" placeholder="enter text" onChange={reverseInput} />
+                <input id="txt" type="text" name="text" value={this.state.value} onChange={this.handleChange} />
 
-                <label id="lbl"> Reverse String will display here</label>
+                <label id="lbl"> {this.getReverse()}</label>
+                <label id="lbl"> {this.state.reverse}</label>
             </div>
 
 
         )
+    }
+
+    handleChange(e) {
+        this.setState({ value: e.target.value })
+    }
+
+    getReverse() {
+        let returnVal = this.state.value;
+        let spl = returnVal.split("");
+        let rev = spl.reverse();
+        returnVal = rev.join("");
+        return returnVal;
     }
 
 }
@@ -29,15 +46,7 @@ function handleClick() {
 }
 
 
-function reverseInput(r) {
-    var a = document.getElementById("txt").value;
-    // document.getElementById("lbl").textContent = a.split('').reverse().join('');
-    var o = '';
-    for (var i = a.length - 1; i >= 0; i--)
-        o += a[i];
 
-    document.getElementById("lbl").textContent = o;
-}
 // var n = 0;
 
 // function inc() {
